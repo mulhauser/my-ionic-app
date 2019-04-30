@@ -23,9 +23,6 @@ jobs:
                 paths:
                     - node_modules
             - run:
-                name: Testing
-                command: npm run test
-            - run:
                 name: Building
                 command: ng run app:build:production --prod --service-worker
             - save_cache:
