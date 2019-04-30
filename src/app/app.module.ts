@@ -8,14 +8,22 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireMessagingModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('combined-sw.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
